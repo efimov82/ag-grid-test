@@ -20,6 +20,11 @@ export class VideoComponent implements OnInit {
   constructor(private videoService: VideoService) {
     this.columnDefs = [
       {
+        headerCheckboxSelection: true,
+        checkboxSelection: true,
+        width: 50,
+      },
+      {
         headerName: '',
         field: 'thumbnail',
         width: 100,
