@@ -18,4 +18,4 @@ Run `ng lint` to execute the Lint
 
 ## Screenshot
 
-![Screenshot](https://github.com/efimov82/ag-grid-test/tree/master/files/screen.jpg)
+![Screenshot](https://github.com/efimov82/ag-grid-test/tree/master/files/screen.png)
