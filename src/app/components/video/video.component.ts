@@ -4,6 +4,11 @@ import { Observable } from 'rxjs';
 import { VideoService } from 'src/app/services/video.service';
 import { Video } from 'src/app/models/video';
 
+enum ViewMode {
+  'normal' = 'Normal mode',
+  'selection' = 'Selection mode'
+}
+
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -13,16 +18,21 @@ export class VideoComponent implements OnInit {
   public videos: Observable<Video[]>;
   public columnDefs = [];
   public gridOptions;
+  public currentMode: ViewMode = ViewMode.normal;
   private gridApi;
   private gridColumnApi;
   private youtubeUrl = 'https://www.youtube.com/watch?v=';
+  public rowSelection = 'multiple';
+  public statusBar;
 
   constructor(private videoService: VideoService) {
     this.columnDefs = [
       {
+        headerName: '',
         headerCheckboxSelection: true,
         checkboxSelection: true,
         width: 50,
+        field: 'selection'
       },
       {
         headerName: '',
@@ -51,11 +61,41 @@ export class VideoComponent implements OnInit {
         width: 350
       }
     ];
+
+    this.statusBar = {
+      statusPanels: [
+        {
+          statusPanel: 'agTotalRowCountComponent',
+          align: 'left'
+        },
+        { statusPanel: 'agFilteredRowCountComponent' },
+        { statusPanel: 'agSelectedRowCountComponent' },
+        { statusPanel: 'agAggregationComponent' }
+      ]
+    };
+  }
+
+  public switchMode(): void {
+    this.currentMode = (this.currentMode === ViewMode.normal)  ? ViewMode.selection : ViewMode.normal;
+    this.setVisibleSelectionColumn();
+  }
+
+  public getTotalCount(): void {
+    window.alert ('Total count of records: ' + this.gridApi.getDisplayedRowCount());
+  }
+
+  public getSelectedCount(): void {
+    window.alert ('Selected records: ' + this.gridApi.getSelectedRows().length);
   }
 
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
+    this.setVisibleSelectionColumn();
+  }
+
+  private setVisibleSelectionColumn(): void {
+    this.gridColumnApi.setColumnVisible('selection', this.currentMode === ViewMode.selection);
   }
 
   public getContextMenuItems(params) {

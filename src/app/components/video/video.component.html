@@ -1,10 +1,19 @@
+<div class="panel">
+  <button (click)="switchMode()">{{ currentMode }}</button>
+  <button (click)="getTotalCount()">Total count</button>
+  <button (click)="getSelectedCount()">Selected recors</button>
+</div>
+
+
 <ag-grid-angular #agGrid
   class="ag-theme-balham grid"
   [rowData]="videos | async"
   [columnDefs]="columnDefs"
   [enableRangeSelection]="true"
-  [popupParent]="popupParent"
   [allowContextMenuWithControlKey]="true"
   [getContextMenuItems]="getContextMenuItems"
-  (gridReady)="onGridReady($event)">
+  [rowSelection]="rowSelection"
+  [suppressRowClickSelection]="true"
+  (gridReady)="onGridReady($event)"
+  [statusBar]="statusBar">
 </ag-grid-angular>
