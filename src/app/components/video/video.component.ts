@@ -12,6 +12,10 @@ import { Video } from 'src/app/models/video';
 export class VideoComponent implements OnInit {
   public videos: Observable<Video[]>;
   public columnDefs = [];
+  public gridOptions;
+  private gridApi;
+  private gridColumnApi;
+  private youtubeUrl = 'https://www.youtube.com/watch?v=';
 
   constructor(private videoService: VideoService) {
     this.columnDefs = [
@@ -33,7 +37,7 @@ export class VideoComponent implements OnInit {
         field: 'videoId',
         width: 100,
         cellRenderer: (params) => {
-          return `<a href="https://www.youtube.com/watch?v=${params.value}" target="_blank">Link</a>`;
+          return `<a href="${this.youtubeUrl}${params.value}">Link</a>`;
         }
       },
       {
@@ -42,6 +46,28 @@ export class VideoComponent implements OnInit {
         width: 350
       }
     ];
+  }
+
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+  }
+
+  public getContextMenuItems(params) {
+    let result = [];
+    if (params.column.colId === 'videoId') {
+      result = [
+        {
+          name: 'Open in New Tab',
+          checked: true,
+          action: () => {
+            window.open('https://www.youtube.com/watch?v=' + params.value);
+          }
+        }
+      ];
+    }
+
+    return result;
   }
 
   ngOnInit() {

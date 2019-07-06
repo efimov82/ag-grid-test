@@ -1,5 +1,10 @@
-<ag-grid-angular #agGrid 
-  class="ag-theme-balham grid" 
+<ag-grid-angular #agGrid
+  class="ag-theme-balham grid"
   [rowData]="videos | async"
-  [columnDefs]="columnDefs">
+  [columnDefs]="columnDefs"
+  [enableRangeSelection]="true"
+  [popupParent]="popupParent"
+  [allowContextMenuWithControlKey]="true"
+  [getContextMenuItems]="getContextMenuItems"
+  (gridReady)="onGridReady($event)">
 </ag-grid-angular>
