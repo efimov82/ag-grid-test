@@ -15,3 +15,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running lint check
 
 Run `ng lint` to execute the Lint
+
+## Screenshot
+
+![alt Screenshot](https://github.com/efimov82/ag-grid-test/files/screen.jpg)
