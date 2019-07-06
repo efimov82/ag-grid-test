@@ -6,7 +6,7 @@ describe('Video', () => {
     const description = 'Video description';
     const videoId = '23ewr23w';
     const publishedAt = '2019-02-20';
-    const url = 'http://youtube.com';
+    const videoUrl = 'http://youtube.com';
     const title = 'Video tite';
 
     const data = {
@@ -19,7 +19,7 @@ describe('Video', () => {
         publishedAt,
         thumbnails: {
           default: {
-            url
+            url: videoUrl
           }
         },
         title
@@ -27,11 +27,11 @@ describe('Video', () => {
     };
 
     const video = new Video(data);
-    
+
     expect(video).toBeTruthy();
     expect(video.description).toEqual(description);
     expect(video.publishedAt).toEqual(publishedAt);
-    expect(video.thumbnail).toEqual(url);
+    expect(video.thumbnail).toEqual(videoUrl);
     expect(video.title).toEqual(title);
   });
 });

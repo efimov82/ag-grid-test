@@ -1,21 +1,21 @@
-import { TestBed } from "@angular/core/testing";
-import { HttpClientModule } from "@angular/common/http";
+import { TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 
-import { VideoService } from "./video.service";
+import { VideoService } from './video.service';
 
-describe("VideoService", () => {
+describe('VideoService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientModule]
     })
   );
 
-  it("should be created", () => {
+  it('should be created', () => {
     const service: VideoService = TestBed.get(VideoService);
     expect(service).toBeTruthy();
   });
 
-  it("should get data with limit", () => {
+  it('should get data with limit', () => {
     const service: VideoService = TestBed.get(VideoService);
     const expectLength = 10;
 
@@ -23,5 +23,5 @@ describe("VideoService", () => {
       expect(data.length).toEqual(expectLength);
     });
   });
-  
+
 });

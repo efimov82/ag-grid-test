@@ -1,11 +1,11 @@
 import { VideoData } from '../interfaces';
 
 export class Video {
-  public description: string = '';
-  public publishedAt: string = '';
-  public videoId:     string = '';
-  public thumbnail:   string = '';
-  public title:       string = '';
+  public description = '';
+  public publishedAt = '';
+  public videoId = '';
+  public thumbnail = '';
+  public title = '';
 
   constructor(data: VideoData) {
     const snippet = data.snippet;

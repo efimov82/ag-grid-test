@@ -2,7 +2,7 @@ export interface VideoData {
   id: {
     kind: string,
     videoId: string
-  },
+  };
   snippet: {
     description: string,
     publishedAt: string,
@@ -12,5 +12,5 @@ export interface VideoData {
       }
     },
     title: string
-  }
+  };
 }

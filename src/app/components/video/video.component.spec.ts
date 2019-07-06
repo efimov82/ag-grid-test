@@ -29,6 +29,5 @@ describe('VideoComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    
   });
 });
