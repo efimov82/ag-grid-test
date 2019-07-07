@@ -20,6 +20,7 @@ export class VideoComponent implements OnInit {
   public videos: Observable<Video[]>;
   public rowSelection = 'multiple';
   public statusBar;
+  public countRecords = 50;
 
   private gridApi;
   private gridColumnApi;
@@ -76,7 +77,11 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.videos = this.videoService.getVideos();
+    this.videos = this.videoService.getVideos(this.countRecords);
+  }
+
+  public reloadData(): void {
+    this.videos = this.videoService.getVideos(this.countRecords);
   }
 
   public switchMode(): void {

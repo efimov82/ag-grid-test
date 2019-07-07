@@ -1,4 +1,9 @@
+<div class="loaded-block">
+    <span>Loaded:</span> <input [(ngModel)]="countRecords">
+    <button (click)="reloadData()">Reload</button>
+</div>
 <div class="panel">
+  
   <button (click)="switchMode()">{{ currentMode }}</button>
   <button (click)="getTotalCount()">Total count</button>
   <button (click)="getSelectedCount()">Selected records</button>

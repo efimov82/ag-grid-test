@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { VideoComponent } from './video.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 describe('VideoComponent', () => {
   let component: VideoComponent;
@@ -12,6 +13,7 @@ describe('VideoComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
+        FormsModule,
         AgGridModule.withComponents(
           []
         )

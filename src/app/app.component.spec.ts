@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { VideoComponent } from './components/video/video.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,6 +13,7 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         HttpClientModule,
+        FormsModule,
         AgGridModule.withComponents(
           []
         )
